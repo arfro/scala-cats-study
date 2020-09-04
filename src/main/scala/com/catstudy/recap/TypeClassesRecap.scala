@@ -9,7 +9,8 @@ object TypeClassesRecap {
   trait JsonSerializer[T] {
     def toJson(value: T): String // this is the capability we want to add ad hoc to classes that will be T
   }
-  // 2. Implicit type class instances. Because the above is a generic we need concrete implementations
+  // 2. Implicit type class instances. Because the above is a generic we need concrete implementations.
+  // those could also be defs - depends on the complexity of the application
   implicit object StringSerializer extends JsonSerializer[String] { // for String
     override def toJson(value: String): String =
       s"""
@@ -31,12 +32,13 @@ object TypeClassesRecap {
     list.map(v => jsonSerializer.toJson(v)).mkString("[", ",", "]")
   }
 
-  // part 4. (optional!) EXTENSION METHODS
+  // part 4. (optional!) extend the API to become EXTENSION METHODS.
   object JsonOps {
-    implicit class JsonSerializable[T](value: T)(
-      implicit jsonSerializer: JsonSerializer[T]
+    implicit class JsonSerializable[T](value: T)( // Wrap type T in an implicit class
+      implicit jsonSerializer: JsonSerializer[T] // given jsonSerializer[T] is in scope
     ) {
-      def toJson: String = jsonSerializer.toJson(value)
+      def toJson: String =
+        jsonSerializer.toJson(value) // use that serializer to add "toJson" method to type T
     }
   }
 
