@@ -76,7 +76,7 @@ object ImplicitsRecap {
 
   case class Cat(name: String)
 
-  println(listToJson(List(Cat("abc"), Cat("def"))))
+  println(listToJson(List(Cat("abc"), Cat("test"))))
   // above prints ["name": "abc","name": "def"]
   // in the background compiler will call: listToJson(List(Cat("abc"), Cat("def")))(oneArgCaseClassSerializer[Cat])
 
