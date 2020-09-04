@@ -1,4 +1,4 @@
-package com.catstudy.recap
+package com.catstudy.recap.part1
 
 object TypeClassesRecap {
 
@@ -32,7 +32,7 @@ object TypeClassesRecap {
     list.map(v => jsonSerializer.toJson(v)).mkString("[", ",", "]")
   }
 
-  // part 4. (optional!) extend the API to become EXTENSION METHODS.
+  // part 4. (optional!) extend the API to become  EXTENSION METHODS.
   object JsonOps {
     implicit class JsonSerializable[T](value: T)( // Wrap type T in an implicit class
       implicit jsonSerializer: JsonSerializer[T] // given jsonSerializer[T] is in scope

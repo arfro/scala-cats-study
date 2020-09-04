@@ -1,4 +1,4 @@
-package com.catstudy.recap
+package com.catstudy.recap.part1
 
 object ImplicitsRecap {
   case class Person(name: String) {
