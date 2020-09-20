@@ -80,7 +80,7 @@ object TypeClassesAndVarianceRecap {
     // If a type class instance for a general type is present (here: Animal) compiler will get confused. So:
     // In "organizeShow[Animal]" it sees Cat and Animal type class and gets confused
     println(organizeShow[Cat]) // OK.
-    println(organizeShow[Animal]) // OK in IDE but will throw compile error: ambiguous values.
+    // println(organizeShow[Animal]) // OK in IDE but will throw compile error: ambiguous values.
   }
   // !!! RULE 3 !!!
   // You cannot have contra and co variance at the same time.
