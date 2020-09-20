@@ -2,7 +2,7 @@ package com.catstudy.recap.part2
 
 object Monoids {
 
-  // Main takeaway: ---> !!! Monoid is a semigroup just that it provides us with a "zero" value. !!! <---
+  // Main takeaway: ---> !!! Monoid is a semigroup just that it provides us with a "zero" (a.k.a. "empty") value. !!! <---
 
   // Monoids solve something that semigroups lack...
   // Semigroup's combine is always associative, that means: 4 + 6 == 6 + 4. It doesn't matter which nr we start with.
@@ -59,18 +59,42 @@ object Monoids {
   def combinePhoneBooks[T, K](
     list: List[Map[T, K]]
   )(implicit monoid: Monoid[Map[T, K]]): Map[T, K] = {
-    list.foldLeft(monoid.empty)(_ |+| _) // this is exactly same as above so i can just import Map instances and the whole "combinePhoneBooks" is then redundant!
+    list.foldLeft(monoid.empty)(_ |+| _)
+    // this is exactly same as above so i can just import Map instances and the whole "combinePhoneBooks" is then redundant!
   }
+
+  // Exercise 3. Multi tab combining from a shop cart
+  // hint: i can use combineFold method that i have already!
+  // hint 2: to define a monoid: Monoid.instance
+  case class ShoppingCart(items: List[String], total: Double)
+  import cats.instances.double._
+  implicit val shoppingCartMonoid =
+    Monoid.instance[ShoppingCart](
+      ShoppingCart(List.empty, 0),
+      (sc, sc2) => ShoppingCart(sc.items |+| sc2.items, sc.total |+| sc2.total)
+    )
+  def checkout(carts: List[ShoppingCart]): ShoppingCart = combineFold(carts)
 
   def main(args: Array[String]): Unit = {
     println(sumLeft == sumRight) // this is identical because Semigroup's combine is associative
     println(optMonoid) // just testing if i was right. Yup - it's a None
+
     // Test Exercise 1.
     println(combineFold(nrs)) //500500
     println(combineFold(List("I ", "like ", "monoids")))
+
+    // Test Exercise 2.
     import cats.instances.map._
     println(combinePhoneBooks(phoneBooks))
     // But! because i have a "combineFold" already above i don't have to do this at all. I can just reuse "combineFold"!
     println(combineFold(phoneBooks))
+
+    // Test Exercise 3.
+    import Monoids.shoppingCartMonoid
+    val carts = List(
+      ShoppingCart(List("name", "lala"), 24.2),
+      ShoppingCart(List("lala", "hey"), 77.3)
+    )
+    println(checkout(carts))
   }
 }
