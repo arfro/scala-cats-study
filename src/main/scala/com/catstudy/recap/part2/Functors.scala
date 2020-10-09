@@ -84,8 +84,8 @@ object Functors {
     val tree2NoTypeWithSmartConstruct =
       Tree.branch(13, Tree.leaf(3), Tree.branch(3, Tree.leaf(62), Tree.leaf(6)))
     println(do10xGeneral(tree))
-    println(do10xGeneral[Tree[Int]](tree2NoType))
-    println(do10xGeneral[Tree[Int]](tree2NoTypeWithSmartConstruct))
+    //println(do10xGeneral[Tree[Int]](tree2NoType))
+    //println(do10xGeneral[Tree[Int]](tree2NoTypeWithSmartConstruct))
 
     // EXERCISE 2 TEST:
 
