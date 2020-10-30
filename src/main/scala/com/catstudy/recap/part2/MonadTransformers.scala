@@ -10,7 +10,6 @@ object MonadTransformers {
   // They are not monads themselves
 
   /** OptionT **/
-  //... or do we?!! lets use transformers
   import cats.data.OptionT
   import cats.instances.list._ // fetch OptionT[List]
 
