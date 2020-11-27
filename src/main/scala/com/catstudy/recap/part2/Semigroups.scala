@@ -6,6 +6,7 @@ object Semigroups {
   // Combine means something different for different type classes.
   // Used to write very generic functions that can combine ANY type.
   // Usage real life: data crunching, big data processing, timestamp, eventual consistency need to be reconciled
+  // but also: when running writer monad and we want to combine e.g. Vector[String] of logs in a for comprehension we will need a Vector semigroup in scope!
 
   import cats.Semigroup
   import cats.instances.int._

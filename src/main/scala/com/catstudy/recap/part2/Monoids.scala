@@ -9,6 +9,7 @@ object Monoids {
   // Semigroup does not provide a starting value for a fold.
   // Semigroup is therefor NOT ENOUGH to be able to fold generic types, it's missing the "zero" equivalent.
   // Under the hood monoids actually extends semigroups
+  // Also: monoid is needed when doing writer.reset() (when clearing log in a writer monad): we need a "zero" value for it
 
   import cats.Semigroup
   import cats.instances.int._ // this is shared for all type classes: monoid, semigroup etc.

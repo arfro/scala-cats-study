@@ -3,6 +3,7 @@ package com.catstudy.recap.part3
 object Readers {
 
   // Purely functional way to implement DEPENDENCY INJECTION!
+  // you compose them with map etc. and at the end call .run(dependency) passing the initial dependency to "run" method.
 
   // Readers are data structures that are a wrapper on how to derive B from A
   // Reader[Config, DBConfig] <- Reader() takes a function from Config to DBConfig.
