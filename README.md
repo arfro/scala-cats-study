@@ -77,7 +77,14 @@ Awesome blog post [here](https://blog.buildo.io/monad-transformers-for-the-worki
 Awesome image of a cats transformer [here](https://miro.medium.com/max/1000/1*Tb2VjzXOJiXImWZymmDCfQ.jpeg) (just had to save it...)
 
 
+## Example monads
+- Eval: Eval.now, Eval.later, Eval.always
+- Reader: dependency injection
+- Writer: keep track while data is being processed
+- State: handle state in a functional way. Immutable handling of expressions like "var a = 3; a * 5; a + 2"
 
+## Example non-monads 
+- Validated: data structure that encapsulates data, its validation and errors. Very suitable for collecting error reasons like in a form validation
 
 
 
