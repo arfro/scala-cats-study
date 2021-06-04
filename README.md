@@ -1,4 +1,4 @@
-# scala-cats-study
+# Part 1, 2 and 3: Abstract Maths and Data Manipulation
 
 Documentation for Rock the JVM's Scala Cats course.
 
@@ -86,5 +86,19 @@ Awesome image of a cats transformer [here](https://miro.medium.com/max/1000/1*Tb
 ## Example non-monads 
 - Validated: data structure that encapsulates data, its validation and errors. Very suitable for collecting error reasons like in a form validation
 
+----------------------------------
 
+# Part 3: Type classes
 
+## Semigroupal
+HKT which can tuple elements. Does Cartesian product [(1,2), (3,4) -> (1,3), (1,4), (2,3), (2,4)] 
+unless `def product` is overwritten to do e.g. do product like `zip`.
+Has "product" method. 
+
+Semigroupal <b>EXTENDS</b> a monad because the 
+"product" method which it has can be implemented in terms of `map` and `flatMap`.
+
+Semigroupals are NOT Semigroups: Semigroups combine, Semigroupals tuple
+
+## Applicative
+Functor + pure. Rarely used on their own. Used for non-monad types to give them 'pure', e.g. in Validated. 
