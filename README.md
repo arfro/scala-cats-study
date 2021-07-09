@@ -102,3 +102,23 @@ Semigroupals are NOT Semigroups: Semigroups combine, Semigroupals tuple
 
 ## Applicative
 Functor + pure. Rarely used on their own. Used for non-monad types to give them 'pure', e.g. in Validated. 
+
+## Foldable
+TC for reducing and folding data structures. Uses Eval for `foldRight` implementation which makes it stack safe.
+
+## Traverse
+`traverse` and `sequence`. In `Future` it allows to apply `A => Future[B]` on `List[A]` and return `Future[List[B]]`.
+
+Very useful to nested data structures.
+
+# Part 4
+
+## Kleisli
+Generic data structure (not a TC!) that helps with composing functions returning wrapper instances. With Kleisli instance this is possible:
+```
+f1: Int => Option[String]
+f2: Int => Option[Int]
+Kleisli(f2) andThen Kleisli(f1)
+```
+
+...Identical to Reader Monad! 
