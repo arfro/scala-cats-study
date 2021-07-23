@@ -122,3 +122,13 @@ Kleisli(f2) andThen Kleisli(f1)
 ```
 
 ...Identical to Reader Monad! 
+
+## Contravariant
+Type class that has a `contramap` function. In a regular data structure context `contramap` applies a function to a structure in a reverse order.
+
+In a context of type classes a functor type class that has a `contramap` function is called `Contravariant`.
+Generally speaking, if you have some context `F[A]` for type `A`, and you can get an `A` value out of a `B` value
+— `Contravariant` allows you to get the `F[B]` context for `B`.
+
+Examples of `Contravariant` instances  in cats is `Show`.
+
