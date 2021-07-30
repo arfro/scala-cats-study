@@ -132,3 +132,10 @@ Generally speaking, if you have some context `F[A]` for type `A`, and you can ge
 
 Examples of `Contravariant` instances  in cats is `Show`.
 
+## Invariant
+Type class that has a `imap` function. `imap[B]` function takes two functions: `A => B` and `B => A`. 
+
+(this was the encrypt and decrypt Crypto example)
+
+
+
